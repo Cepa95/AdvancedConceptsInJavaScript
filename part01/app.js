@@ -98,3 +98,14 @@ function sayMyName1(){
 }
 
 console.log(sayMyName1()()())
+
+// function scope vs block scope
+if( 5>4){
+  var secret = '12345';
+}
+console.log(secret)
+
+if( 5>4){
+  let secret1 = '12345';
+}
+console.log(secret1)
