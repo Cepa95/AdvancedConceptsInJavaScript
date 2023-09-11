@@ -36,21 +36,65 @@ function india() {
 canada();
 india();
 
-
-function marry(person1, person2){
-  console.log('arguments: ', arguments)
-  console.log(Array.from(arguments))
+function marry(person1, person2) {
+  console.log("arguments: ", arguments);
+  console.log(Array.from(arguments));
   return `${person1} is now married to ${person2}`;
 }
 
-console.log(marry ('Tim', 'Tina'))
+console.log(marry("Tim", "Tina"));
 
 // arguments keyword
 
-function marry(...args){
-  console.log('arguments: ', args)
-  console.log(Array.from(arguments))
+function marry(...args) {
+  console.log("arguments: ", args);
+  console.log(Array.from(arguments));
   return `${args[0]} is now married to ${args[1]}`;
 }
 
-console.log(marry ('Tim', 'Tina'))
+console.log(marry("Tim", "Tina"));
+
+// function two(){
+//   var isValid;
+// }
+
+// function one(){
+//   var isValid = true; //local environment
+//   two(); // new execution context
+// }
+// var isValid = false;
+// one()
+
+
+//scope chain
+function findName() {
+  var b = "b";
+  return printName();
+}
+
+function printName() {
+  var c = "c";
+  return "Josip";
+}
+
+function sayMyName() {
+  var a = "a";
+  return findName();
+}
+
+console.log(sayMyName());
+
+
+function sayMyName1(){
+  var a = "a";
+  return function findName() {
+    var b = "b";
+    return function printName() {
+      var c = "c"
+      console.log(a)
+      return 'Josip'
+    }
+  }
+}
+
+console.log(sayMyName1()()())
