@@ -65,7 +65,6 @@ console.log(marry("Tim", "Tina"));
 // var isValid = false;
 // one()
 
-
 //scope chain
 function findName() {
   var b = "b";
@@ -84,28 +83,40 @@ function sayMyName() {
 
 console.log(sayMyName());
 
-
-function sayMyName1(){
+function sayMyName1() {
   var a = "a";
   return function findName() {
     var b = "b";
     return function printName() {
-      var c = "c"
-      console.log(a)
-      return 'Josip'
-    }
-  }
+      var c = "c";
+      console.log(a);
+      return "Josip";
+    };
+  };
 }
 
-console.log(sayMyName1()()())
+console.log(sayMyName1()()());
 
 // function scope vs block scope
-if( 5>4){
-  var secret = '12345';
+if (5 > 4) {
+  var secret = "12345";
 }
-console.log(secret)
+console.log(secret);
 
-if( 5>4){
-  let secret1 = '12345';
-}
-console.log(secret1)
+// if (5 > 4) {
+//   let secret1 = "12345";
+// }
+// console.log(secret1);
+
+//IIFE
+var script1 = (function () {
+  function a() {
+    return 5;
+  }
+  return {
+    a: a,
+  };
+})();
+
+var result = script1.a(); 
+console.log(result); 
