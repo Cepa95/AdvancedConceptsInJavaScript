@@ -118,5 +118,25 @@ var script1 = (function () {
   };
 })();
 
-var result = script1.a(); 
-console.log(result); 
+var result = script1.a();
+console.log(result);
+
+//this => gives methods acces to their objects,
+// execute same code for multiple objects
+
+// function checkThis() {
+//   console.log(this);
+// }
+// checkThis();
+
+const obj = {
+  name: "Billy",
+  sing: function () {
+    return "lalala " + this.name;
+  },
+  singAgain(){
+    return this.sing() +'!'
+  }
+};
+console.log(obj.sing());
+console.log(obj.singAgain());
