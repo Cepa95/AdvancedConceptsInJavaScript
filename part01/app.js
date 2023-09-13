@@ -227,3 +227,11 @@ console.log(archer)
 //bind mora pozvati se, spremamo funkciju za sljedece koristenje
 const healArcher = wizard.heal.bind(archer, 100, 100)
 console.log('bind:', healArcher())
+
+//function currying
+
+function multiply(a,b){
+  return a*b
+}
+let mulitplyByTwo = multiply.bind(this, 2)
+console.log(mulitplyByTwo(4))
