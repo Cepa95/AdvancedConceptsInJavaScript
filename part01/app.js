@@ -140,3 +140,60 @@ const obj = {
 };
 console.log(obj.sing());
 console.log(obj.singAgain());
+
+// dynamic vs lexical scope
+const aaa = function(){
+  console.log('aaa ', this)
+  const bbb = function(){
+    console.log('bbb', this)
+    const c = {
+      hi: function () {
+        console.log('ccc,', this)
+      
+      }}
+      c.hi()
+  }
+  bbb()
+}
+aaa()
+
+// const obj2 = {
+//   name:"Billy",
+//   sing(){
+//     console.log('a', this);
+//     var anotherFunction = function(){
+//       console.log('b', this)
+//     }
+//     anotherFunction();
+//   }
+
+// }
+// obj2.sing()
+
+// arrow funkcije leksicki spajaju this
+// const obj2 = {
+//   name:"Billy",
+//   sing(){
+//     console.log('a', this);
+//     var anotherFunction = () => {
+//       console.log('b', this)
+//     }
+//     anotherFunction();
+//   }
+
+// }
+// obj2.sing()
+
+const obj2 = {
+  name:"Billy",
+  sing(){
+    console.log('a', this);
+    let self = this
+    var anotherFunction = function(){
+      console.log('b', self)
+    }
+    anotherFunction();
+  }
+
+}
+obj2.sing()
