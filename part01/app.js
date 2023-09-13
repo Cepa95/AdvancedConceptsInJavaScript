@@ -197,3 +197,33 @@ const obj2 = {
 
 }
 obj2.sing()
+
+
+//call, apply, bind
+
+function abc(){
+  console.log('hi')
+}
+abc.call()
+abc.apply()
+
+const wizard = {
+  name: 'Merlin',
+  health: 100,
+  heal(num1, num2){
+    return this.health += num1 + num2
+  }
+}
+
+const archer = {
+  name: 'Robin Hood',
+  health: 30
+}
+console.log(archer)
+wizard.heal.call(archer, 50, 60)
+console.log(archer)
+wizard.heal.apply(archer, [50, 60])
+console.log(archer)
+//bind mora pozvati se, spremamo funkciju za sljedece koristenje
+const healArcher = wizard.heal.bind(archer, 100, 100)
+console.log('bind:', healArcher())
