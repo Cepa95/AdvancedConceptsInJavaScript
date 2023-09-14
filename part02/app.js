@@ -66,9 +66,14 @@ let obj12345 = {
 };
 
 let superClone = JSON.parse(JSON.stringify(obj12345));
-console.log(superClone)
+console.log(superClone);
 
 //type coercion
-console.log(1=='1')
-console.log(1==='1')
+console.log(1 == "1");
+console.log(1 === "1");
 
+//type caution, dynamic, weak
+
+var aaa = "hello";
+aaa += 17;
+console.log(aaa);
