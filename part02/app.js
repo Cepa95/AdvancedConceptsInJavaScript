@@ -20,3 +20,12 @@ console.log(a.hi)
 // {}
 // []
 // function(){}
+
+var array1 = [1,2,3]
+var array2 = {
+    0: '1',
+    1: '2',
+    2: '3',	
+}
+console.log(Array.isArray(array1))
+console.log(Array.isArray(array2))
