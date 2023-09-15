@@ -9,11 +9,30 @@ const obj = {
   },
 };
 
-console.log(obj.two())
+console.log(obj.two());
 
 //function constructor
-const four = new Function('return 4')
-console.log(four())
+const four = new Function("return 4");
+console.log(four());
 
-const number = new Function('num', 'return num')
-console.log(number(10))
+const number = new Function("num", "return num");
+console.log(number(10));
+
+//functions are first class citizens in JS
+//1
+var stuff = function () {};
+//2
+function a(fn) {
+  fn();
+}
+a(function () {
+  console.log("Hello");
+});
+//3
+function b() {
+  return function c() {
+    console.log("Bye");
+  };
+}
+var d = b();
+d();
