@@ -75,3 +75,12 @@ function letPerson(person, fn) {
 }
 
 console.log(letPerson({ level: "admin", name: "sally" }, authenticate));
+
+const multiplyBy = (num) => (num2) => num * num2;
+
+console.log(multiplyBy(4)(6));
+
+const multiplyByTwo = multiplyBy(2);
+const multiplyByFive = multiplyBy(5);
+console.log(multiplyByTwo(4));
+console.log(multiplyByFive(2));
