@@ -84,3 +84,18 @@ const multiplyByTwo = multiplyBy(2);
 const multiplyByFive = multiplyBy(5);
 console.log(multiplyByTwo(4));
 console.log(multiplyByFive(2));
+
+
+//closure
+const close = () => {
+  let grandpa = 'grandpa'
+  return ()=> {
+    let father = 'father'
+    return function cl(){
+      let son = 'son'
+      return `${grandpa} > ${father} > ${son}`
+    }
+  }
+}
+
+console.log(close()()())
