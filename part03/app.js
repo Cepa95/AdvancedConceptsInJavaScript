@@ -36,3 +36,42 @@ function b() {
 }
 var d = b();
 d();
+
+//Higher order functions
+function letLogin() {
+  let array = [];
+  for (let i = 0; i < 1000000; i++) {
+    array.push(i);
+  }
+  return "Acces granted";
+}
+console.log(letLogin());
+
+function letLoginUser(user) {
+  let array = [];
+  for (let i = 0; i < 1000000; i++) {
+    array.push(i);
+  }
+  return "Acces granted " + user;
+}
+console.log(letLoginUser("josip"));
+
+const giveAccessTo = (name) => "Access granted to " + name;
+
+function authenticate(verify) {
+  let array = [];
+  for (let i = 0; i < verify; i++) {
+    array.push(i);
+  }
+}
+
+function letPerson(person, fn) {
+  if (person.level === "admin") {
+    fn(5000);
+  } else if (person.level === "user") {
+    fn(1000);
+  }
+  return giveAccessTo(person.name);
+}
+
+console.log(letPerson({ level: "admin", name: "sally" }, authenticate));
