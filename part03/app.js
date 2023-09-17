@@ -99,3 +99,30 @@ const close = () => {
 }
 
 console.log(close()()())
+
+//memory efficient
+function heavyDuty(index){
+  const bigArray = new Array(7000).fill(':)')
+  console.log('created')
+  return bigArray[index]
+}
+console.log(heavyDuty(589))
+console.log(heavyDuty(589))
+console.log(heavyDuty(589))
+console.log(heavyDuty(589))
+
+function heavyDuty2(){
+  const bigArray = new Array(7000).fill(':)')
+  console.log('created again')
+  return function(index){
+    return bigArray[index]
+  }
+
+}
+const getHeavyDuty = heavyDuty2();
+console.log(getHeavyDuty(55));
+console.log(getHeavyDuty(55));
+console.log(getHeavyDuty(55));
+console.log(getHeavyDuty(55));
+
+//encapsulation
