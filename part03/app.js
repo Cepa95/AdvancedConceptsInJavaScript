@@ -85,39 +85,37 @@ const multiplyByFive = multiplyBy(5);
 console.log(multiplyByTwo(4));
 console.log(multiplyByFive(2));
 
-
 //closure
 const close = () => {
-  let grandpa = 'grandpa'
-  return ()=> {
-    let father = 'father'
-    return function cl(){
-      let son = 'son'
-      return `${grandpa} > ${father} > ${son}`
-    }
-  }
-}
+  let grandpa = "grandpa";
+  return () => {
+    let father = "father";
+    return function cl() {
+      let son = "son";
+      return `${grandpa} > ${father} > ${son}`;
+    };
+  };
+};
 
-console.log(close()()())
+console.log(close()()());
 
 //memory efficient
-function heavyDuty(index){
-  const bigArray = new Array(7000).fill(':)')
-  console.log('created')
-  return bigArray[index]
+function heavyDuty(index) {
+  const bigArray = new Array(7000).fill(":)");
+  console.log("created");
+  return bigArray[index];
 }
-console.log(heavyDuty(589))
-console.log(heavyDuty(589))
-console.log(heavyDuty(589))
-console.log(heavyDuty(589))
+console.log(heavyDuty(589));
+console.log(heavyDuty(589));
+console.log(heavyDuty(589));
+console.log(heavyDuty(589));
 
-function heavyDuty2(){
-  const bigArray = new Array(7000).fill(':)')
-  console.log('created again')
-  return function(index){
-    return bigArray[index]
-  }
-
+function heavyDuty2() {
+  const bigArray = new Array(7000).fill(":)");
+  console.log("created again");
+  return function (index) {
+    return bigArray[index];
+  };
 }
 const getHeavyDuty = heavyDuty2();
 console.log(getHeavyDuty(55));
@@ -126,3 +124,21 @@ console.log(getHeavyDuty(55));
 console.log(getHeavyDuty(55));
 
 //encapsulation
+const makeNuclearButton = () => {
+  let timeWithoutDestruction = 0;
+  const passTime = () => timeWithoutDestruction++;
+  const totalPeaceTime = () => timeWithoutDestruction;
+  const launch = () => {
+    timeWithoutDestruction = -1;
+    return "boom";
+  };
+  setInterval(passTime, 1000);
+  return {
+    launch: launch,
+    totalPeaceTime: totalPeaceTime,
+  };
+};
+
+const ohno = makeNuclearButton();
+console.log(ohno.totalPeaceTime());
+console.log(ohno.launch());
