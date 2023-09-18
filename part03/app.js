@@ -142,3 +142,32 @@ const makeNuclearButton = () => {
 const ohno = makeNuclearButton();
 console.log(ohno.totalPeaceTime());
 console.log(ohno.launch());
+
+
+//extra closures
+let view;
+function initialize(){
+  view = 'balkon';
+  console.log('view has been initialized');
+}
+
+initialize();
+initialize();
+initialize();
+console.log(view)
+
+function initialize1(){
+  let called = 0;
+  if (called > 0){
+    return;
+  }
+  else{
+    view = 'balkon';
+    called++;
+    console.log('view has been initialized');
+  }
+}
+const startOnce = initialize();
+startOnce;
+startOnce;
+console.log(view)
