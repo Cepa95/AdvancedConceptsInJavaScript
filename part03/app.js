@@ -171,3 +171,12 @@ const startOnce = initialize();
 startOnce;
 startOnce;
 console.log(view)
+
+const array = [1,2,3,4]
+// ako je var bit ce i am at index 4
+// let dopusta scoping
+for ( let i=0; i< array.length; i++ ){
+  setTimeout(function(){
+    console.log('I am at index'+ i)
+  },3000)
+}
