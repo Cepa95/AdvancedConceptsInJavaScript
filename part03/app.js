@@ -180,6 +180,33 @@ const array = [1, 2, 3, 4];
 // }
 
 // prototypal inheritance
-const arr = []
-console.log(arr.__proto__)
-console.log(arr.toString())
+const arr = [];
+console.log(arr.__proto__);
+console.log(arr.toString());
+
+let dragon = {
+  name: "drago",
+  fire: true,
+  fight() {
+    return 5;
+  },
+  sing() {
+    if (this.fire) {
+      return `I am ${this.name}, the breather of fire`;
+    }
+  },
+};
+console.log(dragon.sing());
+
+let lizard = {
+  name: "Kiki",
+  fight() {
+    return 1;
+  },
+};
+// const singLizard = dragon.sing.bind(lizard);
+// console.log(singLizard());
+lizard.__proto__ = dragon
+console.log(lizard.sing())
+// console.log(dragon.__proto__)
+console.log(dragon.isPrototypeOf(lizard))
