@@ -207,6 +207,12 @@ let lizard = {
 // const singLizard = dragon.sing.bind(lizard);
 // console.log(singLizard());
 lizard.__proto__ = dragon
-console.log(lizard.sing())
-// console.log(dragon.__proto__)
-console.log(dragon.isPrototypeOf(lizard))
+// console.log(lizard.sing())
+// // console.log(dragon.__proto__)
+// console.log(dragon.isPrototypeOf(lizard))
+for (let prop in lizard){
+  //samo name i fight, ostali su nasljedeni
+  if (lizard.hasOwnProperty(prop)){
+  console.log(prop)
+  }
+}
