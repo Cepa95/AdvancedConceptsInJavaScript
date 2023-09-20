@@ -206,27 +206,45 @@ let lizard = {
 };
 // const singLizard = dragon.sing.bind(lizard);
 // console.log(singLizard());
-lizard.__proto__ = dragon
+lizard.__proto__ = dragon;
 // console.log(lizard.sing())
 // // console.log(dragon.__proto__)
 // console.log(dragon.isPrototypeOf(lizard))
-for (let prop in lizard){
+for (let prop in lizard) {
   //samo name i fight, ostali su nasljedeni
-  if (lizard.hasOwnProperty(prop)){
-  console.log(prop)
+  if (lizard.hasOwnProperty(prop)) {
+    console.log(prop);
   }
 }
 
 let human = {
-  mortal: true
-}
-let socrates = Object.create(human)
-socrates.age = 45
-console.log(socrates.mortal)
-console.log(human.isPrototypeOf(socrates))
+  mortal: true,
+};
+let socrates = Object.create(human);
+socrates.age = 45;
+console.log(socrates.mortal);
+console.log(human.isPrototypeOf(socrates));
 
-
-function multiplyByTen(num){
-  return num * 10
+function multiplyByTen(num) {
+  return num * 10;
 }
-console.log(multiplyByTen.prototype)
+console.log(multiplyByTen.prototype);
+
+//Data object => to have new method .lastYear()
+//which shows you last year 'YYYY' format
+// arrow function ne bi radia jer je on lexically scoped
+Date.prototype.lastYear = function () {
+  return this.getFullYear() - 1;
+};
+console.log(new Date("1990-10-10").lastYear());
+
+//modify .map() to print ':)' at the end of each item
+Array.prototype.map = function () {
+  let arr = [];
+  for (let i = 0; i < this.length; i++) {
+    arr.push((this[i] +':)'));
+  }
+  return arr;
+};
+console.log([1, 2, 3].map());
+//1:), 2:), 3:)
