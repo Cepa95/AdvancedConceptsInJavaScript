@@ -1,15 +1,41 @@
 // alert("Provjera");
 
 //factory functions
+// const elfAttack = {
+//   attack(){
+//     return 'attacks with ' + this.weapon
+//   }
+// }
+
+// function createElf(name, weapon) {
+//   return {
+//     name: name,
+//     weapon: weapon,
+//     // attack() {
+//     //   return "attacks with " + weapon;
+//     // },
+//   };
+// }
+// // const peter = createElf("peter", "stones");
+// // console.log(peter.attack());
+// const sam = createElf("sam", "fire");
+// sam.attack = elfAttack.attack
+// console.log(sam.attack())
+
+// Object.create()
+
+const elfFunctions = {
+  attack() {
+    return "attacks with " + this.weapon;
+  },
+};
 
 function createElf(name, weapon) {
-  return {
-    name: name,
-    weapon: weapon,
-    attack() {
-      return "attacks with " + weapon;
-    },
-  };
+  let newElf = Object.create(elfFunctions);
+  newElf.name = name;
+  newElf.weapon = weapon;
+  return newElf;
 }
-const peter = createElf("peter", "stones");
-console.log(peter.attack());
+const sam = createElf("sam", "fire");
+sam.attack = elfFunctions.attack;
+console.log(sam.attack());
