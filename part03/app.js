@@ -224,3 +224,9 @@ let socrates = Object.create(human)
 socrates.age = 45
 console.log(socrates.mortal)
 console.log(human.isPrototypeOf(socrates))
+
+
+function multiplyByTen(num){
+  return num * 10
+}
+console.log(multiplyByTen.prototype)
