@@ -42,16 +42,18 @@ console.log(sam.attack());
 
 //constructor functions
 function Elf(name, weapon) {
+  console.log("this:", this);
   this.name = name;
   this.weapon = weapon;
+  console.log("this:", this);
 }
 const josip = new Elf("josip", "stones");
 console.log(josip);
 Elf.prototype.attack = function attack() {
-  return "attacks with " + this.weapon
-}
+  return "attacks with " + this.weapon;
+};
 const check = new Elf("check", "fire");
-console.log('check: ',check.attack());
+console.log("check: ", check.attack());
 
 const elf1 = new Function(
   "name",
@@ -62,3 +64,9 @@ this.weapon = weapon;`
 
 const sarah = new elf1("sarah", "fire");
 console.log(sarah);
+
+var a = new Number(5);
+console.log(typeof a);
+var b = 5;
+console.log(typeof b);
+console.log(a === b);
