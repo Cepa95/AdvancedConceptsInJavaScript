@@ -72,7 +72,60 @@
 // console.log(a === b);
 
 //OOP
-class Elf {
+// class Elf {
+//   constructor(name, weapon) {
+//     this.name = name;
+//     this.weapon = weapon;
+//   }
+//   attack() {
+//     return "attack with " + this.weapon;
+//   }
+// }
+
+// const josip = new Elf("josip", "stones");
+// console.log(josip);
+// console.log(josip instanceof Elf);
+
+// // new binding this
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
+
+// //implicit binding
+// const person = {
+//   name: "Karen",
+//   age: 40,
+//   hi() {
+//     console.log("hi " + this.name);
+//   },
+// };
+
+// //explicit binding
+// const person2 = {
+//   name: "Karen",
+//   age: 40,
+//   hi: function () {
+//     console.log("hi " + this.setTimeout).bind(window);
+//   },
+// };
+
+// //arrow
+// const person3 = {
+//   name: "Karen",
+//   age: 40,
+//   hi: function () {
+//     var inner = () => {
+//       console.log("hi " + this.name);
+//     };
+//     return inner();
+//   },
+// };
+
+// console.log(person3.hi())
+
+//inheritance
+class Character {
   constructor(name, weapon) {
     this.name = name;
     this.weapon = weapon;
@@ -81,45 +134,25 @@ class Elf {
     return "attack with " + this.weapon;
   }
 }
-
-const josip = new Elf("josip", "stones");
-console.log(josip);
-console.log(josip instanceof Elf);
-
-// new binding this
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
+class Elf extends Character {
+  constructor(name, weapon, type) {
+    super(name, weapon);
+    this.type = type;
+  }
 }
 
-//implicit binding
-const person = {
-  name: "Karen",
-  age: 40,
-  hi() {
-    console.log("hi " + this.name);
-  },
-};
+class Ogre extends Character {
+  constructor(name, weapon, color) {
+    super(name, weapon);
+    this.color = color;
+  }
+  makeFort() {
+    return "fort made";
+  }
+}
 
-//explicit binding
-const person2 = {
-  name: "Karen",
-  age: 40,
-  hi: function () {
-    console.log("hi " + this.setTimeout).bind(window);
-  },
-};
-
-//arrow
-const person3 = {
-  name: "Karen",
-  age: 40,
-  hi: function () {
-    var inner = () => {
-      console.log("hi " + this.name);
-    };
-    return inner();
-  },
-};
-
-console.log(person3.hi())
+const fiona = new Elf("Fiona", "ninja stars", "princess");
+// const ogre = {...fiona}
+console.log(fiona);
+const shrek = new Ogre("Shrek", "club", "green");
+console.log(shrek);
