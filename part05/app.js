@@ -37,3 +37,16 @@ function b(num) {
   return num * 2;
 }
 console.log(b(a(3, 4)));
+
+//idempotence
+
+function notGood(num) {
+  return Math.random(num);
+}
+console.log(notGood(5));
+
+//imperative vs declarative
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+}
+[1, 2, 3].forEach((item) => console.log(item));
