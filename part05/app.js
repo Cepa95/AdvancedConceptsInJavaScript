@@ -50,3 +50,18 @@ for (let i = 0; i < 10; i++) {
   console.log(i);
 }
 [1, 2, 3].forEach((item) => console.log(item));
+
+//immutability
+const obj = { name: "andrei" };
+function clone(obj) {
+  return { ...obj }; // pure function
+}
+
+function updateName(obj) {
+  const obj2 = clone(obj);
+  obj2.name = 'Nana'
+  return obj2;
+}
+const updateObj = updateName(obj);
+console.log(updateObj);
+console.log(obj)
