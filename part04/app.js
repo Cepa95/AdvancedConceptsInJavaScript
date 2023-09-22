@@ -156,3 +156,21 @@ const fiona = new Elf("Fiona", "ninja stars", "princess");
 console.log(fiona);
 const shrek = new Ogre("Shrek", "club", "green");
 console.log(shrek);
+
+
+class Employee {
+  #name = "Test"; // private field
+  // setName(name) {
+  //     this.#name = name;
+  // }
+  set setName(name) {
+    this.#name = name;
+  }
+  get name(){
+    return this.#name;
+  }
+}
+const employer = new Employee();
+// employer.setName('New'); // ok
+employer.setName = 'Ime'
+console.log(employer.name);
