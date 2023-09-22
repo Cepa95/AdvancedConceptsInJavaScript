@@ -59,9 +59,21 @@ function clone(obj) {
 
 function updateName(obj) {
   const obj2 = clone(obj);
-  obj2.name = 'Nana'
+  obj2.name = "Nana";
   return obj2;
 }
 const updateObj = updateName(obj);
 console.log(updateObj);
-console.log(obj)
+console.log(obj);
+
+//debugger
+const flattened = [
+  [0, 1],
+  [2, 3],
+  [4, 5],
+].reduce((accumulator, array) => {
+  // debugger
+  return accumulator.concat(array);
+}, []);
+
+console.log(flattened);
