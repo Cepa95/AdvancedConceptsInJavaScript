@@ -72,16 +72,54 @@
 // console.log(a === b);
 
 //OOP
-class Elf{
-  constructor(name, weapon){
+class Elf {
+  constructor(name, weapon) {
     this.name = name;
     this.weapon = weapon;
   }
-  attack(){
-    return 'attack with ' + this.weapon
+  attack() {
+    return "attack with " + this.weapon;
   }
 }
 
 const josip = new Elf("josip", "stones");
 console.log(josip);
-console.log(josip instanceof Elf)
+console.log(josip instanceof Elf);
+
+// new binding this
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+//implicit binding
+const person = {
+  name: "Karen",
+  age: 40,
+  hi() {
+    console.log("hi " + this.name);
+  },
+};
+
+//explicit binding
+const person2 = {
+  name: "Karen",
+  age: 40,
+  hi: function () {
+    console.log("hi " + this.setTimeout).bind(window);
+  },
+};
+
+//arrow
+const person3 = {
+  name: "Karen",
+  age: 40,
+  hi: function () {
+    var inner = () => {
+      console.log("hi " + this.name);
+    };
+    return inner();
+  },
+};
+
+console.log(person3.hi())
