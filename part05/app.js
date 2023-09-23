@@ -107,16 +107,36 @@ function addTo80(n) {
 addTo80(10);
 addTo80(20); //dugo traje, neefikasno
 
-let cache = {};
+// let cache = {};
 function memoizedAddTo80(n) {
-  if (n in cache) {
-    return cache[n];
-  } else {
-    console.log('long time')
-    cache[n] =n + 80;
-    return cache[n]
-  }
+  let cache = {};
+  return function (n) {
+    if (n in cache) {
+      return cache[n];
+    } else {
+      console.log("long time");
+      cache[n] = n + 80;
+      return cache[n];
+    }
+  };
 }
-memoizedAddTo80(5)
-memoizedAddTo80(5)
-console.log(cache)
+const memoized = memoizedAddTo80();
+console.log(memoized(5));
+console.log(memoized(6));
+console.log(memoized(5));
+
+// compose
+// const compose = (f, g) => (data) => f(g(data));
+// const multiplyBy3 = (num) => num * 3;
+// const makePositive = (num) => Math.abs(num);
+// const multiplyBy3andAbsolute = compose(multiplyBy3, makePositive);
+
+// console.log(multiplyBy3andAbsolute(-50));
+
+//pipe
+const pipe = (f, g) => (data) => g(f(data));
+const multiplyBy3 = (num) => num * 3;
+const makePositive = (num) => Math.abs(num);
+const multiplyBy3andAbsolute = pipe(multiplyBy3, makePositive);
+
+console.log(multiplyBy3andAbsolute(-50));
