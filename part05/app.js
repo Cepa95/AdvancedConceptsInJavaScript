@@ -99,3 +99,24 @@ console.log(incrementFn());
 const multiply = (a, b, c) => a * b * c;
 const partialMultiplyBy5 = multiply.bind(null, 5);
 console.log(partialMultiplyBy5(4, 10));
+
+//memoization
+function addTo80(n) {
+  return n + 80;
+}
+addTo80(10);
+addTo80(20); //dugo traje, neefikasno
+
+let cache = {};
+function memoizedAddTo80(n) {
+  if (n in cache) {
+    return cache[n];
+  } else {
+    console.log('long time')
+    cache[n] =n + 80;
+    return cache[n]
+  }
+}
+memoizedAddTo80(5)
+memoizedAddTo80(5)
+console.log(cache)
