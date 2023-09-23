@@ -77,3 +77,20 @@ const flattened = [
 }, []);
 
 console.log(flattened);
+
+//HOF, closures
+const hof = () => () => 5
+const hof1 = (fn) => fn(6)
+console.log(hof()());
+
+const closure = function () {
+  let count = 0;
+  return function increment(){
+     count++;
+     return count
+  }
+}
+const incrementFn = closure()
+console.log(incrementFn());
+console.log(incrementFn());
+console.log(incrementFn());
