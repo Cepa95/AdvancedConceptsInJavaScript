@@ -79,18 +79,23 @@ const flattened = [
 console.log(flattened);
 
 //HOF, closures
-const hof = () => () => 5
-const hof1 = (fn) => fn(6)
+const hof = () => () => 5;
+const hof1 = (fn) => fn(6);
 console.log(hof()());
 
 const closure = function () {
   let count = 0;
-  return function increment(){
-     count++;
-     return count
-  }
-}
-const incrementFn = closure()
+  return function increment() {
+    count++;
+    return count;
+  };
+};
+const incrementFn = closure();
 console.log(incrementFn());
 console.log(incrementFn());
 console.log(incrementFn());
+
+//partial application
+const multiply = (a, b, c) => a * b * c;
+const partialMultiplyBy5 = multiply.bind(null, 5);
+console.log(partialMultiplyBy5(4, 10));
