@@ -52,11 +52,11 @@
 //     .catch((error) => console.log(error))
 // );
 
-const urls = [
-  "https://jsonplaceholder.typicode.com/users",
-  "https://jsonplaceholder.typicode.com/posts",
-  "https://jsonplaceholder.typicode.com/albums",
-];
+// const urls = [
+//   "https://jsonplaceholder.typicode.com/users",
+//   "https://jsonplaceholder.typicode.com/posts",
+//   "https://jsonplaceholder.typicode.com/albums",
+// ];
 
 // Promise.all(
 //   urls.map((url) => {
@@ -137,32 +137,82 @@ const urls = [
 
 //ES9
 
-const animals = {
-  tiger: 23,
-  lion: 5,
-  monkey: 10,
-  bird: 14
-};
+// const animals = {
+//   tiger: 23,
+//   lion: 5,
+//   monkey: 10,
+//   bird: 14,
+// };
 
 // const { tiger, ...rest } = animals;
 // console.log(tiger);
 // console.log(rest);
 
-const array = [1, 2, 3, 4, 5];
-function sum(a, b, c, d, e) {
-  return a + b + c + d + e;
-}
-console.log(sum(...array));
+// const array = [1, 2, 3, 4, 5];
+// function sum(a, b, c, d, e) {
+//   return a + b + c + d + e;
+// }
+// console.log(sum(...array));
 
-function objectSpread(p1,p2,p3){
-  console.log(p1)
-  console.log(p2)
-  console.log(p3)
-}
+// function objectSpread(p1, p2, p3) {
+//   console.log(p1);
+//   console.log(p2);
+//   console.log(p3);
+// }
 
+// const { tiger, lion, ...rest } = animals;
 
+// objectSpread(tiger, rest);
+//finally
+const urls = [
+  "https://jsonplaceholder.typicode.com/users",
+  "https://jsonplaceholder.typicode.com/posts",
+  "https://jsonplaceholder.typicode.com/albums",
+];
 
-const { tiger, lion, ...rest } = animals
+// Promise.all(
+//   urls.map((url) => {
+//     return fetch(url).then((resp) => resp.json());
+//   })
+// )
+//   .then((results) => {
+//     console.log(results[0]);
+//     console.log(results[1]);
+//     console.log(results[2]);
+//   })
+//   .catch(() => console.log("error"))
+//   .finally((data) => console.log("extra"));
 
+//for await of
 
-objectSpread(tiger,rest)
+const getData = async function () {
+  try {
+    const [users, posts, albums] = await Promise.all(
+      urls.map((url) => fetch(url).then((resp) => resp.json()))
+    );
+
+    console.log(users);
+    console.log(posts);
+    console.log(albums);
+  } catch {
+    console.log("oops");
+  }
+};
+
+// getData();
+
+const loopThroughUrls = (url) => {
+  for (url of urls) {
+    console.log(url);
+  }
+};
+loopThroughUrls(urls);
+
+const getData2 = async function () {
+  const arrayOfPromises = urls.map((url) => fetch(url));
+  for await (let request of arrayOfPromises) {
+    const data = await request.json();
+    console.log(data);
+  }
+};
+getData2();
