@@ -72,65 +72,97 @@ const urls = [
 
 //async await
 
-async function fetchUsers() {
-  const resp = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await resp.json();
-  console.log(data);
-}
-fetchUsers();
+// async function fetchUsers() {
+//   const resp = await fetch("https://jsonplaceholder.typicode.com/users");
+//   const data = await resp.json();
+//   console.log(data);
+// }
+// fetchUsers();
 
-const getData = async function () {
-  try {
-    const [users, posts, albums] = await Promise.all(
-      urls.map((url) => fetch(url).then((resp) => resp.json()))
-    );
+// const getData = async function () {
+//   try {
+//     const [users, posts, albums] = await Promise.all(
+//       urls.map((url) => fetch(url).then((resp) => resp.json()))
+//     );
 
-    console.log(users);
-    console.log(posts);
-    console.log(albums);
-  } catch {
-    console.log("oops");
-  }
-};
+//     console.log(users);
+//     console.log(posts);
+//     console.log(albums);
+//   } catch {
+//     console.log("oops");
+//   }
+// };
 
-getData();
+// getData();
 
-function someAsyncOperation1() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const result = "operacija jedan";
-      resolve(result);
-    }, 5000);
-  });
-}
+// function someAsyncOperation1() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       const result = "operacija jedan";
+//       resolve(result);
+//     }, 5000);
+//   });
+// }
 
-function someAsyncOperation2() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const result = "operacija dva";
-      resolve(result);
-    }, 2000);
-  });
-}
+// function someAsyncOperation2() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       const result = "operacija dva";
+//       resolve(result);
+//     }, 2000);
+//   });
+// }
 
-async function example() {
-  console.log("Start");
-  const result1 = await someAsyncOperation1();
-  console.log("After await 1");
-  const result2 = await someAsyncOperation2();
-  console.log("After await 2");
-  return result1 + " " + result2;
-}
+// async function example() {
+//   console.log("Start");
+//   const result1 = await someAsyncOperation1();
+//   console.log("After await 1");
+//   const result2 = await someAsyncOperation2();
+//   console.log("After await 2");
+//   return result1 + " " + result2;
+// }
 
-example()
-  .then((result) => {
-    console.log("Final result:", result);
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
+// example()
+//   .then((result) => {
+//     console.log("Final result:", result);
+//   })
+//   .catch((error) => {
+//     console.error("Error:", error);
+//   });
 
 // console.log(5 + 2);
 // for (let i = 0; i < 10000; i++) {
 //   console.log(i);
 // }
+
+//ES9
+
+const animals = {
+  tiger: 23,
+  lion: 5,
+  monkey: 10,
+  bird: 14
+};
+
+// const { tiger, ...rest } = animals;
+// console.log(tiger);
+// console.log(rest);
+
+const array = [1, 2, 3, 4, 5];
+function sum(a, b, c, d, e) {
+  return a + b + c + d + e;
+}
+console.log(sum(...array));
+
+function objectSpread(p1,p2,p3){
+  console.log(p1)
+  console.log(p2)
+  console.log(p3)
+}
+
+
+
+const { tiger, lion, ...rest } = animals
+
+
+objectSpread(tiger,rest)
