@@ -185,34 +185,45 @@ const urls = [
 
 //for await of
 
-const getData = async function () {
-  try {
-    const [users, posts, albums] = await Promise.all(
-      urls.map((url) => fetch(url).then((resp) => resp.json()))
-    );
+// const getData = async function () {
+//   try {
+//     const [users, posts, albums] = await Promise.all(
+//       urls.map((url) => fetch(url).then((resp) => resp.json()))
+//     );
 
-    console.log(users);
-    console.log(posts);
-    console.log(albums);
-  } catch {
-    console.log("oops");
-  }
-};
+//     console.log(users);
+//     console.log(posts);
+//     console.log(albums);
+//   } catch {
+//     console.log("oops");
+//   }
+// };
 
-// getData();
+// // getData();
 
-const loopThroughUrls = (url) => {
-  for (url of urls) {
-    console.log(url);
-  }
-};
-loopThroughUrls(urls);
+// const loopThroughUrls = (url) => {
+//   for (url of urls) {
+//     console.log(url);
+//   }
+// };
+// loopThroughUrls(urls);
 
-const getData2 = async function () {
-  const arrayOfPromises = urls.map((url) => fetch(url));
-  for await (let request of arrayOfPromises) {
-    const data = await request.json();
-    console.log(data);
-  }
-};
-getData2();
+// const getData2 = async function () {
+//   const arrayOfPromises = urls.map((url) => fetch(url));
+//   for await (let request of arrayOfPromises) {
+//     const data = await request.json();
+//     console.log(data);
+//   }
+// };
+// getData2();
+// callback queue=> task queue
+setTimeout(() => {
+  console.log("3");
+}, 0);
+setTimeout(() => {
+  console.log("4");
+}, 10);
+//job queue => microtask queue
+Promise.resolve("hi").then((data) => console.log("2", data));
+
+console.log("1");
