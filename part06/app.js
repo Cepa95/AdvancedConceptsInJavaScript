@@ -230,35 +230,61 @@ const urls = [
 
 //Parallel, sequence, race
 
-const promisify = (item, delay) =>
-  new Promise((resolve) => setTimeout(() => resolve(item), delay));
+// const promisify = (item, delay) =>
+//   new Promise((resolve) => setTimeout(() => resolve(item), delay));
 
-const a = () => promisify("a", 100);
-const b = () => promisify("b", 5000);
-const c = () => promisify("c", 3000);
+// const a = () => promisify("a", 100);
+// const b = () => promisify("b", 5000);
+// const c = () => promisify("c", 3000);
 
-console.log(a(), b(), c());
+// console.log(a(), b(), c());
 
-async function parallel() {
-  const promises = [a(), b(), c()];
-  const [output1, output2, output3] = await Promise.all(promises);
-  return `Parallel is done: ${output1} ${output2} ${output3}`;
-}
-parallel().then(console.log);
+// async function parallel() {
+//   const promises = [a(), b(), c()];
+//   const [output1, output2, output3] = await Promise.all(promises);
+//   return `Parallel is done: ${output1} ${output2} ${output3}`;
+// }
+// parallel().then(console.log);
 
-async function race() {
-  const promises = [a(), b(), c()];
-  const output1 = await Promise.race(promises);
-  return `race is done: ${output1}`;
-}
+// async function race() {
+//   const promises = [a(), b(), c()];
+//   const output1 = await Promise.race(promises);
+//   return `race is done: ${output1}`;
+// }
 
-race().then(console.log);
+// race().then(console.log);
 
-async function sequence() {
-  const output1 = await a();
-  const output2 = await b();
-  const output3 = await c();
-  return `Sequence is done: ${output1} ${output2} ${output3} `;
-}
+// async function sequence() {
+//   const output1 = await a();
+//   const output2 = await b();
+//   const output3 = await c();
+//   return `Sequence is done: ${output1} ${output2} ${output3} `;
+// }
 
-sequence().then(console.log);
+// sequence().then(console.log);
+
+//allSettled()
+// const promiseOne = new Promise((resolve, reject) => setTimeout(resolve, 2000));
+
+// const promiseTwo = new Promise((resolve, reject) => setTimeout(reject, 3000));
+
+// Promise
+//   .allSettled([promiseOne, promiseTwo])
+//   .then((data) => console.log(data))
+//   .catch((e) => console.log("something failed;", e));
+
+  //any
+  const p1 = new Promise((resolve) => {
+    setTimeout(() => resolve("A"), Math.floor(Math.random() * 1000));
+  });
+  const p2 = new Promise((resolve) => {
+    setTimeout(() => resolve("B"), Math.floor(Math.random() * 1000));
+  });
+  const p3 = new Promise((resolve) => {
+    setTimeout(() => resolve("C"), Math.floor(Math.random() * 1000));
+  });
+
+  (async function () {
+    const result = await Promise.any([p1, p2, p3]);
+    console.log(result); 
+  })();
